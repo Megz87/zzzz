@@ -39,15 +39,13 @@ CREATE TABLE sets
 
 
 
-CREATE TABLE flashcards
-(
-	flash_id int NOT NULL AUTO_INCREMENT,
+CREATE TABLE flashcards2
+(	id INT KEY AUTO_INCREMENT NOT NULL ,
 	flash_num int,
+	createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	question varchar(255) NOT NULL,
-	answer varchar(255) NOT NULL,
-	PRIMARY KEY (flash_id)
-);
-
+	answer varchar(255) NOT NULL
+    );
 
 
 CREATE TABLE categories
