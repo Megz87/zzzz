@@ -14,6 +14,20 @@ module.exports = function(app) {
 
   // Create all our routes and set up logic within those routes where required.
 
+var pg = require('pg');
+
+app.get('/db', function (request, response) {
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('SELECT * FROM flashcards', function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.render('pages/db', {results: result.rows} ); }
+    });
+  });
+});
+
   app.get("/", function(req, res) {
     db.Category.findAll({
       // include: [ Set ]
